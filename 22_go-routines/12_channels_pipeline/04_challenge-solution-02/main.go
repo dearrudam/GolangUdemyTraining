@@ -5,17 +5,19 @@ import (
 )
 
 func main() {
-	in := gen(10)
+	in := gen()
 	for f := range fatorial(in) {
 		fmt.Println(f)
 	}
 }
 
-func gen(n int) <-chan int {
+func gen() <-chan int {
 	out := make(chan int)
 	go func() {
-		for i := 1; i <= n; i++ {
-			out <- i
+		for i := 1; i <= 10; i++ {
+			for j := 5; j <= 10; j++ {
+				out <- j
+			}
 		}
 		close(out)
 	}()
